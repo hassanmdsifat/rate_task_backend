@@ -33,7 +33,7 @@ class RateCalculatorManager:
         for day, average_price in raw_data:
             daily_rate_list.append({
                 'day': parse_date_from_datetime(day),
-                'average_price': average_price
+                'average_price': float(average_price) if average_price else None
             })
         return daily_rate_list
 

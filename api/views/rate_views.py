@@ -5,7 +5,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST, HTTP_500_INTERNAL_SERVER_ERROR
 
-from utils.managers.port_manager import PortManager
 from utils.managers.port_region_factory import PortRegionFactory
 from utils.managers.rate_calculator_manager import RateCalculatorManager
 from utils.managers.validation_manager import ValidatorManager
@@ -37,6 +36,7 @@ class RateView(APIView):
                 based on code_type
                 and get list of ports 
             """
+
             origin_port_list = manager_getter.get_manager_by_code(
                 origin_code_type
             ).get_port_list_by_code(origin)
