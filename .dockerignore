@@ -1,0 +1,9 @@
+.env
+db.sqlite3
+.idea/
+.dockerignore
+.gitignore
+.git/
+*.Dockerfile
+readme.md
+staticfiles
