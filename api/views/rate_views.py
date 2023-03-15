@@ -32,6 +32,11 @@ class RateView(APIView):
             origin_code_type = validator_manager.validate_provided_code(origin)
             destination_code_type = validator_manager.validate_provided_code(destination)
 
+            """
+                GET proper manager from PortRegionFactory
+                based on code_type
+                and get list of ports 
+            """
             origin_port_list = manager_getter.get_manager_by_code(
                 origin_code_type
             ).get_port_list_by_code(origin)
