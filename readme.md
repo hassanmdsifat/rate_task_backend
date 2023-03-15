@@ -37,5 +37,5 @@ docker run --env-file ./.env -p 8000:8000 --name rate_backend rate_backend
 ## Run unittest
 run the following command from project root using terminal
 ```shell
-docker exec -it rate_backend ./run_unit_test.sh
+docker exec -it rate_backend ./run_unittest.sh
 ```
