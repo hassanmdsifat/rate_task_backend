@@ -1,4 +1,4 @@
-from utils.managers.port_managers import PortManager
+from utils.managers.port_manager import PortManager
 from utils.managers.region_manager import RegionManager
 
 

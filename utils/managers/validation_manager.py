@@ -1,7 +1,7 @@
 from rest_framework.exceptions import ValidationError
 
 from api.models import Port, Region
-from utils.helpers.date_time_helpers import parse_date
+from utils.helpers.date_time_helpers import parse_date_from_string
 
 
 class ValidatorManager:
@@ -12,8 +12,8 @@ class ValidatorManager:
         if not date_to:
             raise ValidationError("Date to parameter is not provided")
 
-        parsed_date_from = parse_date(date_from)
-        parsed_date_to = parse_date(date_to)
+        parsed_date_from = parse_date_from_string(date_from)
+        parsed_date_to = parse_date_from_string(date_to)
 
         if parsed_date_from > parsed_date_to:
             raise ValidationError("Date from can not be bigger then Date to")

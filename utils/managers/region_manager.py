@@ -7,20 +7,22 @@ class RegionManager(BasePRManager):
 
     def get_port_list_by_code(self, region_slug):
         region_recursive_query = """
-            SELECT code from ports where parent_slug in (
+            SELECT code FROM ports WHERE parent_slug IN (
                 WITH RECURSIVE rate_table_cte AS
                 (
                     SELECT slug, parent_slug
                     FROM regions
-                    WHERE slug=%s
+                    WHERE slug=%(slug)s
                     UNION
                     SELECT r.slug, r.parent_slug
-                    from regions as r
-                    INNER JOIN rate_table_cte as rtc on r.parent_slug = rtc.slug
+                    FROM regions AS r
+                    INNER JOIN rate_table_cte AS rtc ON r.parent_slug = rtc.slug
                 ) 
                 SELECT slug FROM rate_table_cte
             )
             """
         with connection.cursor() as cursor:
-            cursor.execute(region_recursive_query, [region_slug])
+            cursor.execute(region_recursive_query, {
+                'slug': region_slug
+            })
             return [current_code[0] for current_code in cursor.fetchall()]
