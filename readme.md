@@ -33,6 +33,11 @@ run the following command from project root using terminal
 ```shell
 docker run --env-file ./.env -p 8000:8000 --name rate_backend rate_backend
 ```
+Then head over to your browser and make request
+
+http://127.0.0.1:8000/api/rates/?date_from=2016-01-01&date_to=2016-01-10&origin=CNSGH&destination=north_europe_main
+
+Alternatively you can use postman/curl.
 
 ## Run unittest
 run the following command from project root using terminal
